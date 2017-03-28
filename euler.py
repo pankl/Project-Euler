@@ -242,6 +242,12 @@ def euler16():
     digits = [int(d) for d in str(int(p))]
     print sum(digits)
 
+def euler17():
+    d = dict()
+    d[1] = "one"
+    d[2] = "two"
+    d[3] = "three"
+    d[4] = "four"
 
 def findChainLength(num):
     if num == 1:
