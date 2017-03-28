@@ -215,6 +215,7 @@ def euler13():
            20849603980134001723930671666823555245252804609722, 53503534226472524250874054075591789781264330331690]
     print str(sum(arr))[0:10]
 
+
 def euler14():
     maxChain = 0
     start = -1
@@ -226,6 +227,19 @@ def euler14():
     print start, maxChain
 
 
+def euler15():
+    n = 20
+    calc = math.factorial(2*n) // math.factorial(n) // math.factorial(n)
+    print calc
+    print "Number of routes are there through a 20*20 grid is: " + str(calc)
+
+
+def euler16():
+    p = math.pow(2,1000)
+    digits = [int(d) for d in str(int(p))]
+    print sum(digits)
+
+
 def findChainLength(num):
     if num == 1:
         return 1
@@ -234,6 +248,7 @@ def findChainLength(num):
     else:
         num = 3*num + 1
     return 1 + findChainLength(num)
+
 
 def numDivisor(num):
     cnt = 1
@@ -276,6 +291,8 @@ def main():
     euler12()
     euler13()
     euler14()
+    euler15()
+    euler16()
 
 if __name__ == "__main__":
     main()
