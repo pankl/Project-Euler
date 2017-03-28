@@ -228,6 +228,9 @@ def euler14():
 
 
 def euler15():
+    # Since the terms of the question allow at each step to go either (R) right or (D) down
+    # it can be reduced to a simple combinatorial question on how many strings of 2*n length with equal number of
+    # Rs and Ds we can create
     n = 20
     calc = math.factorial(2*n) // math.factorial(n) // math.factorial(n)
     print calc
