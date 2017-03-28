@@ -1,13 +1,14 @@
 import math
 import numpy as np
 
+
 def euler5():
     prod = 1
     for i in (2,3,5,7,11,13,17,19):
         prod *= i
     prod *= 3
     prod *= 8
-    print prod
+    print "Smallest positive number that is evenly divisible by all of the numbers from 1 to 20 is: " + str(prod)
 
 
 def euler7():
@@ -18,7 +19,7 @@ def euler7():
             last = i
             cnt += 1
         i += 2
-    print last
+    print "The 10,001st prime number is: " + str(last)
 
 def euler11():
 
@@ -64,7 +65,9 @@ def euler11():
             if (i +3 < 20) and (j > 3):
                 temp_prod = asd.item((i, j)) * asd.item((i + 1, j - 1)) * asd.item((i + 2, j - 2)) * asd.item((i + 3, j - 3))
                 max_prod = temp_prod if temp_prod > max_prod else max_prod
-    print max_prod
+    print "The greatest product of four adjacent numbers in the same direction (up, down, left, right, or diagonally) in the 20*20 grid is: " + str(max_prod)
+
+
 def isPrime(num):
     """checks if number is prime, expects to get numbers greater than 2"""
     if num % 2 == 0:
@@ -76,8 +79,8 @@ def isPrime(num):
 
 
 def main():
-    #euler5()
-    #euler7()
+    euler5()
+    euler7()
     euler11()
 
 if __name__ == "__main__":
