@@ -1,3 +1,8 @@
+import math
+import datetime
+from dateutil.relativedelta import relativedelta
+
+
 def euler18():
     dicLines = {0 : [75],
                 1 : [95, 64],
@@ -20,8 +25,57 @@ def euler18():
             dicLines[i-1][j] = max(dicLines[i-1][j] + dicLines[i][j], dicLines[i-1][j] + dicLines[i][j+1])
     print dicLines[0]
 
+
+def euler19():
+    cnt = 0
+    startDate = datetime.datetime.strptime('01-01-1901', '%d-%m-%Y')
+    endDate = datetime.datetime.strptime('01-01-2001', '%d-%m-%Y')
+    numMonths = relativedelta(endDate,startDate).years * 12
+
+    for i in range(numMonths):
+        if startDate.weekday() == 6:
+            cnt += 1
+        startDate = startDate + relativedelta(months=1)
+    print cnt
+
+
+def euler20():
+    n = 100
+    fact = math.factorial(n)
+    digits = [int(d) for d in str(int(fact))]
+
+    print sum(digits)
+
+
+def euler21():
+    amics = list()
+    for i in range(10000):
+        if i in amics:
+            pass
+        else:
+            divs = sum(divisors(i))
+            if i == sum(divisors(divs)) and i != divs:
+                amics.append(i)
+                amics.append(divs)
+    print amics
+    print sum(amics)
+
+
+def divisors(num):
+    divs = list()
+    divs.append(1)
+    for i in range(2,int(math.sqrt(num))+1):
+        if num % i == 0:
+            divs.append(i)
+            divs.append(num / i)
+    return divs
+
+
 def main():
-    euler18()
+    #euler18()
+    #euler19()
+    #euler20()
+    euler21()
 
 if __name__ == "__main__":
     main()
