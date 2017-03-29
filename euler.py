@@ -20,6 +20,8 @@ def euler3():
     for i in range(int(math.sqrt(n))+1,3,-2):
         if n % i == 0:
             divs.append(i)
+            divs.append(int(n / i))
+    divs.sort(reverse=True)
     for elem in divs:
         if isPrime(elem):
             print "largest prime factor of the number 600851475143 is: " + str(elem)
@@ -335,21 +337,21 @@ def isPrime(num):
 
 
 def main():
-    #euler2()
-    #euler3()
-    #euler4()
-    #euler5()
-    #euler6()
-    #euler7()
-    #euler8()
-    #euler9()
-    #euler10()
-    #euler11()
-    #euler12()
-    #euler13()
-    #euler14()
-    #euler15()
-    #euler16()
+    euler2()
+    euler3()
+    euler4()
+    euler5()
+    euler6()
+    euler7()
+    euler8()
+    euler9()
+    euler10()
+    euler11()
+    euler12()
+    euler13()
+    euler14()
+    euler15()
+    euler16()
     euler17()
 
 if __name__ == "__main__":
