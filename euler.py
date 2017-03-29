@@ -242,12 +242,60 @@ def euler16():
     digits = [int(d) for d in str(int(p))]
     print sum(digits)
 
+
 def euler17():
+
+    numletters = 0
+    for i in range(1001):
+       numletters += numberOfLetters(i)
+    print numletters
+
+def numberOfLetters(num):
     d = dict()
+    d[0] = ""
     d[1] = "one"
     d[2] = "two"
     d[3] = "three"
     d[4] = "four"
+    d[5] = "five"
+    d[6] = "six"
+    d[7] = "seven"
+    d[8] = "eight"
+    d[9] = "nine"
+    d[10] = "ten"
+    d[11] = "eleven"
+    d[12] = "twelve"
+    d[13] = "thirteen"
+    d[14] = "fourteen"
+    d[15] = "fifteen"
+    d[16] = "sixteen"
+    d[17] = "seventeen"
+    d[18] = "eighteen"
+    d[19] = "nineteen"
+    d[20] = "twenty"
+    d[30] = "thirty"
+    d[40] = "forty"
+    d[50] = "fifty"
+    d[60] = "sixty"
+    d[70] = "seventy"
+    d[80] = "eighty"
+    d[90] = "ninety"
+    d[100] = "hundred"
+
+    if len(str(num)) == 1:
+        return len(d[num])
+    if len(str(num)) == 2:
+        if num < 20:
+            return len(d[num])
+        else:
+            return len(d[num - (num % 10)] + d[num % 10])
+    if len(str(num)) == 3:
+        strLen = len(d[int(num/100)]) + len(d[100])
+        if num % 100 != 0:
+            strLen += len("and") + numberOfLetters(num % 100)
+        return strLen
+    return len("onethousand")
+
 
 def findChainLength(num):
     if num == 1:
@@ -287,21 +335,22 @@ def isPrime(num):
 
 
 def main():
-    euler2()
-    euler3()
-    euler4()
-    euler5()
-    euler6()
-    euler7()
-    euler8()
-    euler9()
-    euler10()
-    euler11()
-    euler12()
-    euler13()
-    euler14()
-    euler15()
-    euler16()
+    #euler2()
+    #euler3()
+    #euler4()
+    #euler5()
+    #euler6()
+    #euler7()
+    #euler8()
+    #euler9()
+    #euler10()
+    #euler11()
+    #euler12()
+    #euler13()
+    #euler14()
+    #euler15()
+    #euler16()
+    euler17()
 
 if __name__ == "__main__":
     main()
