@@ -1,113 +1,9 @@
-import time
 import math
+import Auxilary as aux
+import datetime
+from dateutil.relativedelta import relativedelta
 import numpy as np
 
-
-def euler2():
-    low = 1
-    hi = 2
-    sum = 0
-    while hi < 4000000:
-        if hi % 2 == 0:
-            sum += hi
-        hi = hi + low
-        low = hi - low
-    print "Sum of the even-valued terms in Fib series under 4,000,000 is: " + str(sum)
-
-def euler3():
-    n = 600851475143
-    divs = list()
-    for i in range(int(math.sqrt(n))+1,3,-2):
-        if n % i == 0:
-            divs.append(i)
-            divs.append(int(n / i))
-    divs.sort(reverse=True)
-    for elem in divs:
-        if isPrime(elem):
-            print "largest prime factor of the number 600851475143 is: " + str(elem)
-            return
-
-
-def euler4():
-    i = 100
-    j = 999
-    polins = list()
-    for i in range(100,999):
-        for j in range(100,999):
-            if isPolindrome(i*j):
-                polins.append(i*j)
-    polins.sort(reverse=True)
-    print polins
-    print "The largest palindrome made from the product of two 3-digit numbers is: " + str(polins[0])
-
-
-def euler5():
-    prod = 1
-    for i in (2,3,5,7,11,13,17,19):
-        prod *= i
-    prod *= 3
-    prod *= 8
-    print "Smallest positive number that is evenly divisible by all of the numbers from 1 to 20 is: " + str(prod)
-
-def euler6():
-    s = 0
-    n = 101
-    for i in range(1,n):
-        s+= i**2
-    print "The difference between the sum of the squares of the first one hundred natural numbers and the square of the sum is: " + str((n*(n-1)/2)**2 - s)
-
-
-def euler7():
-    cnt = 1
-    i = 3
-    while cnt <= 10001:
-        if (isPrime(i)):
-            last = i
-            cnt += 1
-        i += 2
-    print "The 10,001st prime number is: " + str(last)
-
-
-def euler8():
-    strNum = "7316717653133062491922511967442657474235534919493496983520312774506326239578318016984801869478851843" \
-             "8586156078911294949545950173795833195285320880551112540698747158523863050715693290963295227443043557" \
-             "6689664895044524452316173185640309871112172238311362229893423380308135336276614282806444486645238749" \
-             "3035890729629049156044077239071381051585930796086670172427121883998797908792274921901699720888093776" \
-             "6572733300105336788122023542180975125454059475224352584907711670556013604839586446706324415722155397" \
-             "5369781797784617406495514929086256932197846862248283972241375657056057490261407972968652414535100474" \
-             "8216637048440319989000889524345065854122758866688116427171479924442928230863465674813919123162824586" \
-             "1786645835912456652947654568284891288314260769004224219022671055626321111109370544217506941658960408" \
-             "0719840385096245544436298123098787992724428490918884580156166097919133875499200524063689912560717606" \
-             "0588611646710940507754100225698315520005593572972571636269561882670428252483600823257530420752963450"
-    lstNum = list(strNum)
-    maxProd = 0
-    ind = -1
-    for i in range(0,988):
-        prod = 1
-        for j in range(0,13):
-            prod *= int(lstNum[i+j])
-        if prod > maxProd:
-            maxProd = prod
-            ind = i
-    print "Value of this product is: " + str(maxProd)
-    print "Start index of it is: " + str(ind)
-
-def euler9():
-    for i in range(1,1000):
-        for j in range(1,1000):
-            if (i+j < 1000) and (i**2+j**2 == (1000 - (i+j))**2):
-                print "The product of Pythagorean triplet for which a + b + c = 1000 is: " + str(i*j*(1000 - (i+j)))
-                return
-
-
-def euler10():
-    start = time.time()
-    mySum = 2
-    for i in range(3,2000000,2):
-        mySum = mySum + i if isPrime(i) else mySum
-    end = time.time()
-    print "The sum of all the primes below two million is: " + str(mySum)
-    print end - start
 
 def euler11():
 
@@ -158,7 +54,7 @@ def euler11():
 def euler12():
     for i in range(10000,1000000):
         triag = i * (i+1) / 2
-        if numDivisor(triag) > 500:
+        if aux.numDivisor(triag) > 500:
             print i
             print triag
             return
@@ -222,7 +118,7 @@ def euler14():
     maxChain = 0
     start = -1
     for i in range(1,1000001):
-        ch = findChainLength(i)
+        ch = aux.findChainLength(i)
         if ch > maxChain:
             start = i
             maxChain = ch
@@ -240,7 +136,7 @@ def euler15():
 
 
 def euler16():
-    p = math.pow(2,1000)
+    p = math.pow(2, 1000)
     digits = [int(d) for d in str(int(p))]
     print sum(digits)
 
@@ -249,103 +145,54 @@ def euler17():
 
     numletters = 0
     for i in range(1001):
-       numletters += numberOfLetters(i)
+       numletters += aux.numberOfLetters(i)
     print numletters
 
-def numberOfLetters(num):
-    d = dict()
-    d[0] = ""
-    d[1] = "one"
-    d[2] = "two"
-    d[3] = "three"
-    d[4] = "four"
-    d[5] = "five"
-    d[6] = "six"
-    d[7] = "seven"
-    d[8] = "eight"
-    d[9] = "nine"
-    d[10] = "ten"
-    d[11] = "eleven"
-    d[12] = "twelve"
-    d[13] = "thirteen"
-    d[14] = "fourteen"
-    d[15] = "fifteen"
-    d[16] = "sixteen"
-    d[17] = "seventeen"
-    d[18] = "eighteen"
-    d[19] = "nineteen"
-    d[20] = "twenty"
-    d[30] = "thirty"
-    d[40] = "forty"
-    d[50] = "fifty"
-    d[60] = "sixty"
-    d[70] = "seventy"
-    d[80] = "eighty"
-    d[90] = "ninety"
-    d[100] = "hundred"
+def euler18():
+    dicLines = {0 : [75],
+                1 : [95, 64],
+                2 : [17, 47, 82],
+                3 : [18, 35, 87, 10],
+                4 : [20, 4, 82, 47, 65],
+                5 : [19, 1, 23, 75, 3, 34],
+                6 : [88, 2, 77, 73, 7, 63, 67],
+                7 : [99, 65, 4, 28, 6, 16, 70, 92],
+                8 : [41, 41, 26, 56, 83, 40, 80, 70, 33],
+                9 : [41, 48, 72, 33, 47, 32, 37, 16, 94, 29],
+                10 : [53, 71, 44, 65, 25, 43, 91, 52, 97, 51, 14],
+                11 : [70, 11, 33, 28, 77, 73, 17, 78, 39, 68, 17, 57],
+                12 : [91, 71, 52, 38, 17, 14, 91, 43, 58, 50, 27, 29, 48],
+                13 : [63, 66, 4, 68, 89, 53, 67, 30, 73, 16, 69, 87, 40, 31],
+                14 : [4, 62, 98, 27, 23, 9, 70, 98, 73, 93, 38, 53, 60, 4, 23]}
 
-    if len(str(num)) == 1:
-        return len(d[num])
-    if len(str(num)) == 2:
-        if num < 20:
-            return len(d[num])
-        else:
-            return len(d[num - (num % 10)] + d[num % 10])
-    if len(str(num)) == 3:
-        strLen = len(d[int(num/100)]) + len(d[100])
-        if num % 100 != 0:
-            strLen += len("and") + numberOfLetters(num % 100)
-        return strLen
-    return len("onethousand")
+    for i in range(14,0,-1):
+        for j in range(len(dicLines[i])-1):
+            dicLines[i-1][j] = max(dicLines[i-1][j] + dicLines[i][j], dicLines[i-1][j] + dicLines[i][j+1])
+    print dicLines[0]
 
 
-def findChainLength(num):
-    if num == 1:
-        return 1
-    if num % 2 == 0:
-        num = num / 2
-    else:
-        num = 3*num + 1
-    return 1 + findChainLength(num)
+def euler19():
+    cnt = 0
+    startDate = datetime.datetime.strptime('01-01-1901', '%d-%m-%Y')
+    endDate = datetime.datetime.strptime('01-01-2001', '%d-%m-%Y')
+    numMonths = relativedelta(endDate,startDate).years * 12
+
+    for i in range(numMonths):
+        if startDate.weekday() == 6:
+            cnt += 1
+        startDate = startDate + relativedelta(months=1)
+    print cnt
 
 
-def numDivisor(num):
-    cnt = 1
-    for i in range(2,int(math.sqrt(num))+1):
-        if num % i == 0:
-            cnt += 2
-    return cnt
+def euler20():
+    n = 100
+    fact = math.factorial(n)
+    digits = [int(d) for d in str(int(fact))]
 
-
-def isPolindrome(num):
-    strNum = list(str(num))
-    a = ''.join(strNum[:])
-    b = ''.join(strNum[::-1])
-    if a==b:
-        return True
-    else:
-        return False
-
-def isPrime(num):
-    """checks if number is prime, expects to get numbers greater than 2"""
-    if num % 2 == 0:
-        return False
-    for i in range(3, int(math.ceil(math.sqrt(num)) + 1), 2):
-        if num % i == 0:
-            return False
-    return True
+    print sum(digits)
 
 
 def main():
-    euler2()
-    euler3()
-    euler4()
-    euler5()
-    euler6()
-    euler7()
-    euler8()
-    euler9()
-    euler10()
     euler11()
     euler12()
     euler13()
@@ -353,6 +200,9 @@ def main():
     euler15()
     euler16()
     euler17()
+    euler18()
+    euler19()
+    euler20()
 
 if __name__ == "__main__":
     main()
