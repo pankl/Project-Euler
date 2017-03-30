@@ -46,11 +46,21 @@ def euler24():
     per = [x for x in perms][999999]
     print "The millionth lexicographic permutation of the digits 0, 1, 2, 3, 4, 5, 6, 7, 8 and 9 is: " + ''.join(str(x) for x in per)
 
+def euler25():
+    hi,low = 1,1
+    cnt=2
+    while len(str(hi)) < 1000:
+        cnt+=1
+        hi = hi + low
+        low = hi - low
+    print "First term in the Fibonacci sequence to contain 1000 digits is: " + str(cnt)
+
 def main():
     #euler21()
     #euler22()
     #euler23()
-    euler24()
+    #euler24()
+    euler25()
 
 
 if __name__ == "__main__":
