@@ -1,5 +1,5 @@
 import Auxilary as aux
-
+from itertools import permutations
 
 def euler21():
     amics = list()
@@ -40,10 +40,17 @@ def euler23():
     print "Sum of all the positive integers which cannot be written as the sum of two abundant numbers is: " + str(s)
 
 
+def euler24():
+    seed = [0,1,2,3,4,5,6,7,8,9]
+    perms = permutations(seed)
+    per = [x for x in perms][999999]
+    print ''.join(str(x) for x in per)
+
 def main():
-    euler21()
-    euler22()
-    euler23()
+    #euler21()
+    #euler22()
+    #euler23()
+    euler24()
 
 
 if __name__ == "__main__":
