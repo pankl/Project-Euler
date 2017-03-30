@@ -86,7 +86,7 @@ def isPrime(num):
 
 
 def isabundant(num):
-    if sum(divisors(num)) + 1 > num:
+    if sum(divisors(num)) > num:
         return True
     return False
 
