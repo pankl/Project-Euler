@@ -55,12 +55,32 @@ def euler25():
         low = hi - low
     print "First term in the Fibonacci sequence to contain 1000 digits is: " + str(cnt)
 
+
+def euler26():
+    maxLen = 0
+    num = 0
+    for i in range(1000, 2, -1):
+        rems = list()
+        rem = 1 % i
+        while rem != 0 and rem not in rems:
+            rems.append(rem)
+            rem *= 10
+            rem %= i
+        if len(rems) > maxLen:
+            maxLen = len(rems)
+            num = i
+
+    print "Max len is: " + str(maxLen)
+    print "Belongs to number: " + str(num)
+
+def euler27()
 def main():
     #euler21()
     #euler22()
     #euler23()
     #euler24()
-    euler25()
+    #euler25()
+    euler26()
 
 
 if __name__ == "__main__":
