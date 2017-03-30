@@ -1,3 +1,5 @@
+import math
+
 def numberOfLetters(num):
     d = dict()
     d[0] = ""
@@ -83,13 +85,20 @@ def isPrime(num):
     return True
 
 
+def isabundant(num):
+    if sum(divisors(num)) + 1 > num:
+        return True
+    return False
+
+
 def divisors(num):
     divs = list()
     divs.append(1)
     for i in range(2,int(math.sqrt(num))+1):
         if num % i == 0:
             divs.append(i)
-            divs.append(num / i)
+            if i != num / i:
+                divs.append(num / i)
     return divs
 
 
