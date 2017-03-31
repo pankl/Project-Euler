@@ -102,12 +102,11 @@ def euler28():
     s = 1
     lastInd = 1
     for i in range(1,501):
-        print "i is: " + str(i)
         step = 2 * i
         for j in range(1, 5):
             lastInd += step
             s += lastInd
-    print "The sum of the numbers on the diagonals in a 1001*1001 spiral formed in the same way is: " + s
+    print "The sum of the numbers on the diagonals in a 1001*1001 spiral formed in the same way is: " + str(s)
 
 
 def euler29():
