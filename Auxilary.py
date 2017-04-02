@@ -124,6 +124,13 @@ def count(S, m, n):
     return table[n][m - 1]
 
 
+def isPandigital(num):
+    digs = [int(x) for x in str(num)]
+    if len(digs) == len(set(digs)) == max(digs) and min(digs) == 1:
+        return True
+    return False
+
+
 def main():
     pass
 
