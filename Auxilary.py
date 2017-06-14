@@ -77,7 +77,9 @@ def isPolindrome(num):
 
 def isPrime(num):
     """checks if number is prime, expects to get numbers greater than 2"""
-    if num % 2 == 0:
+    if num == 2:
+        return True
+    if num % 2 == 0 or num < 2:
         return False
     for i in range(3, int(math.ceil(math.sqrt(num)) + 1), 2):
         if num % i == 0:
@@ -129,6 +131,46 @@ def isPandigital(num):
     if len(digs) == len(set(digs)) == max(digs) and min(digs) == 1:
         return True
     return False
+
+
+def wordValue(word):
+    sumWord = 0
+    for ch in word:
+        sumWord += ord(ch.upper()) - ord('A') + 1
+    return sumWord
+
+
+def trianNum(n):
+    return n * (n + 1) // 2
+
+
+def isPentagonal(num):
+    penTest = (math.sqrt(1 + 24 * num) + 1.0) / 6.0;
+    return penTest == int(penTest);
+
+
+def primeListInRange(start=1,end=100):
+    retList = list()
+    for i in range(start,end):
+        if isPrime(i):
+            retList.append(i)
+    return retList
+
+
+def distinctPrimeFactors(num,primeList = None):
+    primeFactors = set()
+    if primeList is None:
+        primes = primeListInRange(2, num+1)
+    else:
+        primes = primeList
+    cnt = 0
+    while num > 1:
+        if num % primes[cnt] == 0:
+            primeFactors.add(primes[cnt])
+            num = num // primes[cnt]
+        else:
+            cnt += 1
+    return list(primeFactors)
 
 
 def main():

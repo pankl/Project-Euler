@@ -3,6 +3,7 @@ import math
 import numpy as np
 import Auxilary as aux
 
+
 def euler1():
     s = 0
     for i in range(3,1000,3):
@@ -10,7 +11,8 @@ def euler1():
     for i in range(5,1000,5):
         if i % 3 != 0:
             s+=i
-    print i
+    print s
+
 
 def euler2():
     low = 1
@@ -23,10 +25,11 @@ def euler2():
         low = hi - low
     print "Sum of the even-valued terms in Fib series under 4,000,000 is: " + str(sum)
 
+
 def euler3():
     n = 600851475143
     divs = list()
-    for i in range(int(math.sqrt(n))+1,3,-2):
+    for i in range(int(math.sqrt(n))+1, 3, -2):
         if n % i == 0:
             divs.append(i)
             divs.append(int(n / i))
